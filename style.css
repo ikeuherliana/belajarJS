@@ -1,0 +1,9 @@
+.hapus-item {
+    font-size: 10px;
+    background-color: lightgray; 
+    border: 1px solid black; 
+    padding: 3px; 
+    cursor: pointer;
+    color: red;
+    margin-left: 100px; 
+}

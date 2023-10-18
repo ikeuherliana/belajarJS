@@ -77,8 +77,48 @@
 // let button = document.querySelector("button")
 // let input = document.querySelector("input")
 
-// button.addEventListener('click', function(){
-//     let isi = input.value
-//     console.log(isi)
-//     p.innerHTML = isi
-// })
+// Di dalam file JavaScript, kita akan menangani semua logika yang dibutuhkan.
+
+// Menggunakan array untuk menyimpan teks yang diinput
+
+const button = document.getElementById('tombol_form');
+const input = document.getElementById('input');
+const hasilContainer = document.getElementById('hasil');
+
+button.addEventListener('click', function(){
+    const isi = input.value;
+    if (isi.trim() !== '') {
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+
+        const teks = document.createElement('span');
+        teks.textContent = isi;
+
+        const hapus = document.createElement('span');
+        hapus.textContent = ' X';
+        hapus.className = 'hapus-item'; 
+        hapus.style.cursor = 'pointer';
+        hapus.style.color = 'black';
+        
+        const item = document.createElement('div');
+        item.appendChild(checkbox);
+        item.appendChild(teks);
+        item.appendChild(hapus);
+
+        hasilContainer.appendChild(item);
+
+        input.value = '';
+
+        hapus.addEventListener('click', function() {
+            hasilContainer.removeChild(item);
+        });
+
+        checkbox.addEventListener('change', function() {
+            if (checkbox.checked) {
+                teks.style.textDecoration = 'line-through';
+            } else {
+                teks.style.textDecoration = 'none';
+            }
+        });
+    }
+});
